@@ -49,7 +49,12 @@ const checkIfFromToday = (imgTitle) => {
     let today = new Date().getTime();
     today = new Intl.DateTimeFormat('he-IL').format(today);
 
-    return imgDate === today; // true or false
+    if (imgDate === today) {
+        return true;
+    } else {
+        functions.logger.log('The found image is not from today');
+        return false;
+    }
 }
 
 
