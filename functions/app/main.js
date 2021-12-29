@@ -53,6 +53,7 @@ const checkIfFromToday = (imgTitle) => {
         return true;
     } else {
         functions.logger.log('The found image is not from today');
+        sendErrorMessage('Could not find new caricature');
         return false;
     }
 }
@@ -88,6 +89,8 @@ const sendErrorMessage = async (errorMessage) => {
             chat_id: config.telegram.my_chat_id,
             text: errorMessage
         }
+    }).catch(error => {
+        functions.logger.error(error)
     })
 }
 
