@@ -33,12 +33,15 @@ const checkIfFromToday = (imgTitle) => {
         throw 'Invalid image date';
     }
     let imgDateArr = imgDate[0].split('.');
+
+    // TODO still don't know if the commented out code below is needed.
     // adds 0 before single digit in the day and month section (2021.6.9 => 2021.06.09)
-    for (let i = 0; i < 1; i++) {
-        if (imgDateArr[i].length === 1) {
-            imgDateArr[i] = '0' + imgDateArr[i]
-        }
-    }
+    // for (let i = 0; i < 2; i++) {
+    //     if (imgDateArr[i].length === 1) {
+    //         imgDateArr[i] = '0' + imgDateArr[i]
+    //     }
+    // }
+
     // converts 21 to 2021
     if (imgDateArr[2].length === 2) {
         imgDateArr[2] = '20' + imgDateArr[2];
@@ -48,7 +51,6 @@ const checkIfFromToday = (imgTitle) => {
 
     let today = new Date().getTime();
     today = new Intl.DateTimeFormat('he-IL').format(today);
-
     if (imgDate === today) {
         return true;
     } else {
