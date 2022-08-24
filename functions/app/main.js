@@ -12,7 +12,7 @@ const getImageData = async () => {
     try {
         const res = await axios.get(url);
         let $ = cheerio.load(res.data);
-        let imgObj = $('img[class=Caricat-picture]')[0].attribs;
+        let imgObj = $('img[class=MainImageMedia]')[0].attribs;
         return {
             imgUrl: imgObj.src,
             imgTitle: imgObj.title
